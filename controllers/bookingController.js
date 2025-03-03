@@ -118,3 +118,24 @@ export const cancelBooking = async (req, res) => {
     res.status(500).json({ message: "Error cancelling booking", error });
   }
 };
+
+// Get booked slots for a specific parking station
+export const getBookedSlotsListByParking = async (req, res) => {
+  try {
+    const { parkingId } = req.params;
+
+    // Find all bookings for the given station
+    const bookedSlots = await Booking.find({
+      parkingStationId: parkingId,
+    }).select("slot");
+
+    // Extract only slot numbers
+    const slotList = bookedSlots.map((booking) => booking.slot);
+
+    res.status(200).json({ bookedSlots: slotList });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error fetching booked slots", error: err.message });
+  }
+};

@@ -6,6 +6,7 @@ import {
   getUserBookings,
   cancelBooking,
   getBookingsByParkingId,
+  getBookedSlotsListByParking,
 } from "../controllers/bookingController.js";
 
 const router = express.Router();
@@ -27,5 +28,6 @@ router.put("/cancel/:id", cancelBooking);
 
 // Get bookings by parking ID
 router.get("/parking/:parkingId", getBookingsByParkingId);
+router.get("/booked-slots/:parkingId", getBookedSlotsListByParking);
 
 export default router;
