@@ -28,7 +28,7 @@ const BookingSchema = new mongoose.Schema(
     startTime: { type: String, required: true },
     endTime: { type: String, required: true },
     transactionId: { type: String, required: true },
-    sessionId: { type: String, required: true },
+    sessionId: { type: String, required: true, unique: true },
     status: {
       type: String,
       enum: ["active", "expired", "cancelled"],
