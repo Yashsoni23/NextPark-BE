@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const BookingSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: "User",
       required: true,
     },
@@ -19,7 +19,7 @@ const BookingSchema = new mongoose.Schema(
     vehicleType: {
       type: String,
       required: true,
-      enum: ["4 Wheeler", "2 Wheeler"],
+      enum: ["Four Wheeler", "Two Wheeler"],
     },
     location: { type: String, required: true },
     slot: { type: String, required: true },
